@@ -418,7 +418,6 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
                 }
             }
             append("\nCordialement")
-            // AJOUT DE LA SIGNATURE ICI :
             append("\n\nGénéré par l'application Signalement Universel France")
         }
 
@@ -426,7 +425,6 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
             type = if (photoUri != null) "image/jpeg" else "message/rfc822"
             putExtra(Intent.EXTRA_SUBJECT, subject)
             putExtra(Intent.EXTRA_TEXT, body)
-            // On met l'email en destinataire (tableau de string)
             mairieViewModel.mairieEmail.value?.let { putExtra(Intent.EXTRA_EMAIL, arrayOf(it)) }
 
             photoUri?.let {

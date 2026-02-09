@@ -93,7 +93,7 @@ class PaymentManager(
         if (lastDay != today) {
             prefs.edit()
                 .putInt(KEY_LAST_SENT_DAY, today)
-                .putInt(KEY_DAILY_COUNT, 1) // C'est le 1er envoi du jour
+                .putInt(KEY_DAILY_COUNT, 1)
                 .apply()
         } else {
             prefs.edit()
