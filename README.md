@@ -82,6 +82,6 @@ Note : Les clés de signature (Keystore) ne sont pas incluses dans ce dépôt.
 📄 Licence
 Ce projet est distribué sous licence MIT. Vous êtes libre de consulter, modifier et redistribuer ce code, à condition de conserver la mention de l'auteur original.
 
-Copyright (c) 2024 Clément Perrousset.
+Copyright (c) 2027 Clément Perrousset.
 
 Développé avec ❤️ pour améliorer nos villes.
