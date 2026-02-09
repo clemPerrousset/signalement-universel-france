@@ -1,14 +1,3 @@
-C'est une excellente idée. Un README.md propre et professionnel va non seulement aider les autres développeurs, mais surtout servir de preuve supplémentaire pour Google que tu es transparent sur tes sources de données.
-
-Voici un modèle complet, formaté en Markdown, que tu peux copier-coller directement.
-
-Ce que tu dois faire :
-Crée un fichier nommé README.md à la racine de ton projet (dans le dossier Signalement Universel france).
-
-Copie le texte ci-dessous dedans.
-
-(Optionnel mais recommandé) Crée un dossier screenshots dans ton projet et mets-y 2 ou 3 captures d'écran de l'appli, puis décommente la ligne correspondante dans le README.
-
 Signalement Universel France 🇫🇷
 Une application Android citoyenne pour simplifier le signalement des problèmes de voirie dans les 35 000 communes de France.
 
