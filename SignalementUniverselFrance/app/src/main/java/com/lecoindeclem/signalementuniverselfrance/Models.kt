@@ -63,7 +63,6 @@ class MairieViewModel : ViewModel() {
                     return@launch
                 }
 
-                // 1) Établissements publics v3 (chemin)
                 val mairieEP = getMairieFromInseeViaEP(insee)
                 if (mairieEP != null) {
                     Log.d(TAG, "Mairie via EP v3: ${mairieEP.nom} | ${mairieEP.email ?: "no-email"}")
@@ -73,7 +72,6 @@ class MairieViewModel : ViewModel() {
                     Log.w(TAG, "EP v3 n'a rien renvoyé pour $insee, on tente l'annuaire SP…")
                 }
 
-                // 2) Fallback Annuaire Service-Public
                 val mairieSP = getMairieFromInseeViaAnnuaireSP(insee)
                 if (mairieSP != null) {
                     Log.d(TAG, "Mairie via Annuaire SP: ${mairieSP.nom} | ${mairieSP.email ?: "no-email"}")
@@ -101,7 +99,6 @@ class MairieViewModel : ViewModel() {
         _mairieAdresse.value = null
     }
 
-    // ---------- Étape 1 : code INSEE depuis lat/lon (parse brut pour éviter l'erreur de List) ----------
     private suspend fun getCommuneInseeFromLatLon(lat: Double, lon: Double): String? {
         val url = "https://geo.api.gouv.fr/communes"
         return withTimeout(12_000) {
@@ -111,7 +108,6 @@ class MairieViewModel : ViewModel() {
                 parameter("fields", "nom,code")
             }.bodyAsText()
 
-            // Réponse attendue: [ { "nom": "Dijon", "code": "21231" } ]
             val root = Json.parseToJsonElement(text)
             val arr = root as? JsonArray ?: return@withTimeout null
             val first = arr.firstOrNull() as? JsonObject ?: return@withTimeout null
@@ -119,7 +115,6 @@ class MairieViewModel : ViewModel() {
         }
     }
 
-    // ---------- Étape 2a : EP v3 (chemin /v3/communes/{code}/mairie) ----------
     private suspend fun getMairieFromInseeViaEP(insee: String): MairieEntry? {
         val epUrl = Url("https://etablissements-publics.api.gouv.fr/v3/communes/$insee/mairie")
         return withTimeout(12_000) {
@@ -158,7 +153,6 @@ class MairieViewModel : ViewModel() {
         }
     }
 
-    // ---------- Étape 2b : Fallback Annuaire Service-Public ----------
     private suspend fun getMairieFromInseeViaAnnuaireSP(insee: String): MairieEntry? {
         val url = "https://api-lannuaire.service-public.fr/api/records/1.0/search/"
         return withTimeout(12_000) {
@@ -227,7 +221,6 @@ data class MairieEntry(
     val adresse: String?
 )
 
-// ===================== Helpers JSON =====================
 
 private fun JsonObject.optString(key: String): String? {
     val el = this[key] ?: return null
