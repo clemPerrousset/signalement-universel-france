@@ -1,4 +1,5 @@
 Signalement Universel France 🇫🇷
+
 Une application Android citoyenne pour simplifier le signalement des problèmes de voirie dans les 35 000 communes de France.
 
 ⚠️ AVIS IMPORTANT / DISCLAIMER
