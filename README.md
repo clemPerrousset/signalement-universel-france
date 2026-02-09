@@ -4,7 +4,7 @@ Une application Android citoyenne pour simplifier le signalement des problèmes 
 
 ⚠️ AVIS IMPORTANT / DISCLAIMER
 
-Cette application est une initiative privée et indépendante. Elle ne représente PAS une entité gouvernementale, une mairie ou l'État français.
+Cette application est une initiative privée et indépendante. Elle ne représente PAS une entité gouvernementale, une mairie ou l'État français. Néanmoins, elle fait appel à des API publiques et son code est opensource
 
 This application is a private and independent initiative. It does NOT represent any government entity, municipality, or the French State.
 
