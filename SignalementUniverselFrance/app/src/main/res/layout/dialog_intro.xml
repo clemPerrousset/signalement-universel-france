@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/introTitle"
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Bienvenue sur Signalement Universel France !"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/introBody"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="L'application qui permet de rapporter un problème ou de proposer une idée à la mairie la plus proche.\n\nElle fonctionne sur tout le territoire français : plus besoin d’avoir une application par ville !\n\nÀ partir de votre localisation actuelle, nous retrouvons votre mairie et générons automatiquement tout ce qu’il faut pour vous.\n\nNous ne partageons ni ne stockons aucune information ou localisation : vous cliquez, la localisation est récupérée une fois pour le signalement, c’est tout !\n\nDeux notes :\n- Nous passons par le mail : toute la responsabilité dépend de la personne qui envoie le signalement. Tout abus ne concerne pas Signalement Universel France.\n- Nous avons mis une limite freemium de un signalement par jour, afin de limiter les abus et de permettre à l’app de se développer si elle fonctionne.\n\nNous espérons que vous apprécierez l’app, et sommes à l’écoute de vos idées !"
+            app:layout_constraintTop_toBottomOf="@id/introTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <CheckBox
+            android:id="@+id/introDontShowAgain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Ne plus afficher"
+            app:layout_constraintTop_toBottomOf="@id/introBody"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/introOk"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Continuer"
+            app:layout_constraintTop_toBottomOf="@id/introDontShowAgain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
