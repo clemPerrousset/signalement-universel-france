@@ -194,5 +194,20 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Licenses Link -->
+        <TextView
+            android:id="@+id/tvLicenses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/license_link_text"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?attr/colorPrimary"
+            android:layout_gravity="center_horizontal"
+            android:padding="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:layout_marginTop="8dp"/>
+
     </LinearLayout>
 </ScrollView>

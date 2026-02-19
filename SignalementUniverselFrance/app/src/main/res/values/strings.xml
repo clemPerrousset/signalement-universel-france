@@ -10,4 +10,22 @@
     <string name="subtitle_sms">Vous allez être redirigé vers le bon service de signalement téléphonique ou vous entrerez le numéro frauduleux.</string>
     <string name="title_nature">Signalement nature</string>
     <string name="subtitle_nature">Suricate sera bientôt intégré à l\'application. Pour le moment vous allez être redirigé sur leur plateforme.</string>
+
+    <string name="license_link_text">Licences opensource</string>
+    <string name="license_dialog_title">Licences Open Source</string>
+    <string name="license_dialog_content"><![CDATA[
+        <b>OpenStreetMap</b><br/>
+        © OpenStreetMap contributors.<br/>
+        Data is available under the Open Database License.<br/>
+        <a href="https://www.openstreetmap.org/copyright">https://www.openstreetmap.org/copyright</a><br/><br/>
+        <b>Bibliothèques Open Source</b><br/>
+        Cette application utilise les logiciels open source suivants :<br/>
+        • AndroidX (Apache 2.0)<br/>
+        • Kotlin (Apache 2.0)<br/>
+        • Ktor (Apache 2.0)<br/>
+        • Coil (Apache 2.0)<br/>
+        • OkHttp (Apache 2.0)<br/>
+        • ZXing Android Embedded (Apache 2.0)<br/>
+        • Osmdroid (Apache 2.0)
+    ]]></string>
 </resources>
