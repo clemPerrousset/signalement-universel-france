@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Signalement Universel France</string>
+    <string name="title_mairie">Signaler à la mairie</string>
+    <string name="subtitle_mairie">Trouvez automatiquement la mairie la plus proche de vous et signalez des problèmes !</string>
+    <string name="title_internet">Signalement internet</string>
+    <string name="subtitle_internet">Vous serez redirigé sur Pharos, la plateforme fermée du gouvernement</string>
+    <string name="title_produit">Signaler un produit</string>
+    <string name="subtitle_produit">Signalez un produit de consommation défectueux ou dangereux.</string>
+    <string name="title_sms">Signaler SMS</string>
+    <string name="subtitle_sms">Vous allez être redirigé vers le bon service de signalement téléphonique ou vous entrerez le numéro frauduleux.</string>
+    <string name="title_nature">Signalement nature</string>
+    <string name="subtitle_nature">Suricate sera bientôt intégré à l\'application. Pour le moment vous allez être redirigé sur leur plateforme.</string>
 </resources>
