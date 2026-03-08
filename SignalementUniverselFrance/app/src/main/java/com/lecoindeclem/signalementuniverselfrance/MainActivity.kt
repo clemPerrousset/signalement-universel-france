@@ -42,7 +42,7 @@ import org.osmdroid.views.overlay.Marker
 import java.io.OutputStream
 import java.util.Locale
 
-class MainActivity : AppCompatActivity(), PaymentManager.Listener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var descEdit: TextInputEditText
     private lateinit var photoButton: MaterialButton
@@ -59,11 +59,9 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
     private var currentAddress: String? = null
     private var currentMarker: Marker? = null
 
-    private lateinit var paymentManager: PaymentManager
     private lateinit var prefs: SharedPreferences
 
     private var introAccepted = false
-    private var cachedPrice: String? = null
 
     private val reqLocationPermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -135,10 +133,6 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
         mapView = findViewById(R.id.map)
         sendButton = findViewById(R.id.sendButton)
 
-        paymentManager = PaymentManager(this)
-        paymentManager.setListener(this)
-        paymentManager.start()
-
         mapView.setTileSource(TileSourceFactory.MAPNIK)
         mapView.setMultiTouchControls(true)
         centerFrance()
@@ -159,11 +153,7 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
                 showIntroIfNeeded(force = true)
                 return@setOnClickListener
             }
-            if (paymentManager.canSendToday()) {
-                openContactChooser()
-            } else {
-                showPaywall()
-            }
+            openContactChooser()
         }
 
         lifecycleScope.launch { mairieViewModel.mairieLabel.collect { updateMairieUI() } }
@@ -176,7 +166,6 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
     override fun onResume() {
         super.onResume()
         mapView.onResume()
-        paymentManager.restorePurchases()
     }
 
     override fun onPause() {
@@ -186,7 +175,6 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
 
     override fun onDestroy() {
         super.onDestroy()
-        paymentManager.stop()
     }
 
     private fun centerFrance() {
@@ -358,19 +346,14 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
             .setTitle("Contacter")
             .setItems(items) { _, which ->
                 when (which) {
-                    0 -> prepareEmailAndCount()
-                    1 -> promptAndDialAndCount()
+                    0 -> prepareEmail()
+                    1 -> promptAndDial()
                 }
             }
             .show()
     }
 
-    private fun prepareEmailAndCount() {
-        if (!prepareEmail()) return
-        paymentManager.markSentToday()
-    }
-
-    private fun promptAndDialAndCount() {
+    private fun promptAndDial() {
         val input = TextInputEditText(this).apply {
             hint = "Numéro de téléphone (ex: 03 80 ...)"
         }
@@ -386,7 +369,6 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
                     val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$tel"))
                     try {
                         startActivity(intent)
-                        paymentManager.markSentToday()
                     } catch (_: Exception) {
                         Toast.makeText(this, "Aucune application téléphone disponible", Toast.LENGTH_SHORT).show()
                     }
@@ -442,28 +424,6 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
         }
     }
 
-    private fun showPaywall() {
-        val v = LayoutInflater.from(this).inflate(R.layout.dialog_paywall, null, false)
-        val priceTv = v.findViewById<MaterialTextView>(R.id.paywallPrice)
-        val buyBtn = v.findViewById<MaterialButton>(R.id.paywallBuy)
-        val laterBtn = v.findViewById<MaterialButton>(R.id.paywallLater)
-
-        val priceText = cachedPrice ?: paymentManager.getFormattedPriceOrNull()
-        priceTv.text = priceText?.let { "Déblocage à vie : $it" } ?: "Déblocage à vie : 9,99 €"
-
-        val dialog = AlertDialog.Builder(this)
-            .setView(v)
-            .create()
-
-        buyBtn.setOnClickListener {
-            dialog.dismiss()
-            paymentManager.launchLifetimePurchase(this)
-        }
-        laterBtn.setOnClickListener { dialog.dismiss() }
-
-        dialog.show()
-    }
-
     private fun showIntroIfNeeded(force: Boolean) {
         val hide = prefs.getBoolean(KEY_HIDE_INTRO, false)
         if (!force && hide) {
@@ -490,19 +450,6 @@ class MainActivity : AppCompatActivity(), PaymentManager.Listener {
         dialog.show()
     }
 
-    override fun onPremiumStateChanged(isPremium: Boolean) {
-        if (isPremium) {
-            Toast.makeText(this, "Signalements illimités activés 🎉", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    override fun onPurchaseFlowError(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPriceLoaded(price: String?) {
-        cachedPrice = price
-    }
 
     companion object {
         private const val PREFS_NAME = "suf_ui_prefs"

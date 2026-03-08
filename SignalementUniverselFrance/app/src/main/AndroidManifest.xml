@@ -27,7 +27,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SignalementUniverselFrance">
+        android:theme="@style/Theme.SignalementUniverselFrance"
+        android:hardwareAccelerated="true">
+
         <!-- FileProvider pour partager la photo -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -39,13 +41,25 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".MainActivity"
+        <!-- Launcher Activity: AccueilActivity -->
+        <activity android:name=".AccueilActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!-- Old Main Activity (Mairie) -->
+        <activity android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- New Product Signalement Activity -->
+        <activity android:name=".SignalementProduitActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+
     </application>
 
 </manifest>
