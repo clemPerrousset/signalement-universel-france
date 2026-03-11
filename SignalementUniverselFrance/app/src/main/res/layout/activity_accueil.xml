@@ -22,9 +22,18 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textAppearance="?attr/textAppearanceHeadlineMedium"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="32dp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"/>
+
+        <!-- Section Mairie -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/section_mairie"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
 
         <!-- Card 1: Mairie -->
         <com.google.android.material.card.MaterialCardView
@@ -60,6 +69,16 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Section Autres -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/section_autres"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="12dp"/>
+
         <!-- Card 2: Internet -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardInternet"
@@ -94,7 +113,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Card 3: Produit -->
+        <!-- Card 3: Produit (Hidden) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardProduit"
             android:layout_width="match_parent"
@@ -102,6 +121,7 @@
             android:layout_marginBottom="16dp"
             android:clickable="true"
             android:focusable="true"
+            android:visibility="gone"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             app:rippleColor="?attr/colorControlHighlight">
@@ -195,6 +215,22 @@
                     android:textAppearance="?attr/textAppearanceBodyMedium"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- Open Source Licenses Link -->
+        <TextView
+            android:id="@+id/textOpenSource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/open_source_licenses"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            android:padding="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center_horizontal"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"/>
 
     </LinearLayout>
 </ScrollView>
