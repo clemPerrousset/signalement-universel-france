@@ -11,9 +11,12 @@ import android.widget.ProgressBar
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import coil.load
 import com.journeyapps.barcodescanner.CompoundBarcodeView
 import io.ktor.client.HttpClient
@@ -62,10 +65,37 @@ class SignalementProduitActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_signalement_produit)
 
         barcodeScanner = findViewById(R.id.barcode_scanner)
         formLayout = findViewById(R.id.form_layout)
+
+        val initialPaddingLeft = formLayout.paddingLeft
+        val initialPaddingTop = formLayout.paddingTop
+        val initialPaddingRight = formLayout.paddingRight
+        val initialPaddingBottom = formLayout.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            // Appliquer le padding sur le layout de base (main)
+            // Sauf pour le barcode scanner pour qu'il prenne tout l'écran, on modifie donc formLayout
+            formLayout.setPadding(
+                initialPaddingLeft + systemBars.left,
+                initialPaddingTop + systemBars.top,
+                initialPaddingRight + systemBars.right,
+                initialPaddingBottom + systemBars.bottom
+            )
+
+            // Pour le barcode scanner, sa configuration interne de CompoundBarcodeView
+            // fait en sorte que le preview prend tout l'écran, ce qui est parfait.
+            // S'il a une vue overlay (par ex ViewFinder), on pourrait la decaler
+            val viewFinder = barcodeScanner.findViewById<View>(com.google.zxing.client.android.R.id.zxing_viewfinder_view)
+            viewFinder?.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+
+            insets
+        }
         productImage = findViewById(R.id.product_image)
         productName = findViewById(R.id.product_name)
         productBarcode = findViewById(R.id.product_barcode)
