@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     // Add Kotlin Serialization plugin
     kotlin("plugin.serialization") version "1.9.22"
+    id("com.mikepenz.aboutlibraries.plugin")
 }
 
 android {
@@ -70,6 +71,8 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation("com.google.zxing:core:3.5.1")
 
+    implementation("com.mikepenz:aboutlibraries-core:11.2.3")
+    implementation("com.mikepenz:aboutlibraries:11.2.3")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
