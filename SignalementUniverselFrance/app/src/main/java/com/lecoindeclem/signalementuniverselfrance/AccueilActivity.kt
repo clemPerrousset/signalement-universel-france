@@ -24,7 +24,6 @@ class AccueilActivity : AppCompatActivity() {
             insets
         }
 
-        // Card 1: Mairie
         findViewById<View>(R.id.cardMairie).setOnClickListener { view ->
             val intent = Intent(this, MainActivity::class.java)
             val options = ActivityOptionsCompat.makeScaleUpAnimation(
@@ -33,31 +32,18 @@ class AccueilActivity : AppCompatActivity() {
             startActivity(intent, options.toBundle())
         }
 
-        // Card 2: Internet
         findViewById<View>(R.id.cardInternet).setOnClickListener {
             openUrl("https://www.internet-signalement.gouv.fr")
         }
 
-        // Card 3: Produit (Hidden)
-        // findViewById<View>(R.id.cardProduit).setOnClickListener { view ->
-        //     val intent = Intent(this, SignalementProduitActivity::class.java)
-        //     val options = ActivityOptionsCompat.makeScaleUpAnimation(
-        //         view, 0, 0, view.width, view.height
-        //     )
-        //     startActivity(intent, options.toBundle())
-        // }
-
-        // Card 4: SMS
         findViewById<View>(R.id.cardSms).setOnClickListener {
             sendSms("33700")
         }
 
-        // Card 5: Nature
         findViewById<View>(R.id.cardNature).setOnClickListener {
             openUrl("https://sentinelles.sportsdenature.fr/")
         }
 
-        // Open Source Licenses Link
         findViewById<View>(R.id.textOpenSource).setOnClickListener {
             LibsBuilder()
                 .withActivityTitle(getString(R.string.open_source_licenses))

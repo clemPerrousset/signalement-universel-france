@@ -8,14 +8,14 @@
     android:orientation="vertical"
     tools:context=".SignalementProduitActivity">
 
-    <!-- Barcode Scanner -->
+
     <com.journeyapps.barcodescanner.CompoundBarcodeView
         android:id="@+id/barcode_scanner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
-    <!-- Form Layout (Initially Hidden) -->
+
     <ScrollView
         android:id="@+id/form_layout"
         android:layout_width="match_parent"
@@ -88,7 +88,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Loading Indicator -->
+
     <ProgressBar
         android:id="@+id/loading_indicator"
         android:layout_width="wrap_content"

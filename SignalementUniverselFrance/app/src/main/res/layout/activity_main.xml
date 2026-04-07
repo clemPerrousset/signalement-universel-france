@@ -100,7 +100,7 @@
                 android:clickable="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Carte OSMDroid -->
+
         <org.osmdroid.views.MapView
             android:id="@+id/map"
             android:layout_width="0dp"

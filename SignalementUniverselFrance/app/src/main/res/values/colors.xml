@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- 🇫🇷 Couleurs tricolores -->
-    <color name="fr_blue">#0055A4</color>   <!-- Bleu -->
-    <color name="fr_red">#EF4135</color>    <!-- Rouge -->
-    <color name="fr_white">#FFFFFF</color>  <!-- Blanc -->
+    <color name="fr_blue">#0055A4</color>
+    <color name="fr_red">#EF4135</color>
+    <color name="fr_white">#FFFFFF</color>
 
     <color name="md_theme_light_primary">#0055A4</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>

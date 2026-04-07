@@ -79,8 +79,6 @@ class SignalementProduitActivity : AppCompatActivity() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 
-            // Appliquer le padding sur le layout de base (main)
-            // Sauf pour le barcode scanner pour qu'il prenne tout l'écran, on modifie donc formLayout
             formLayout.setPadding(
                 initialPaddingLeft + systemBars.left,
                 initialPaddingTop + systemBars.top,
@@ -88,9 +86,6 @@ class SignalementProduitActivity : AppCompatActivity() {
                 initialPaddingBottom + systemBars.bottom
             )
 
-            // Pour le barcode scanner, sa configuration interne de CompoundBarcodeView
-            // fait en sorte que le preview prend tout l'écran, ce qui est parfait.
-            // S'il a une vue overlay (par ex ViewFinder), on pourrait la decaler
             val viewFinder = barcodeScanner.findViewById<View>(com.google.zxing.client.android.R.id.zxing_viewfinder_view)
             viewFinder?.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
 
@@ -112,7 +107,6 @@ class SignalementProduitActivity : AppCompatActivity() {
         }
 
         btnSubmit.setOnClickListener {
-            // Simulate sending report
             Toast.makeText(this, "Signalement envoyé avec succès!", Toast.LENGTH_SHORT).show()
             finish()
         }

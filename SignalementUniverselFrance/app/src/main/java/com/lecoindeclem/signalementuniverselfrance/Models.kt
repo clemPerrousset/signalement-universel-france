@@ -239,7 +239,7 @@ private fun JsonArray.firstStringOrNull(): String? {
         try {
             val v = p.content
             if (v.isNotBlank()) return v
-        } catch (_: Exception) { /* ignore */ }
+        } catch (_: Exception) {}
     }
     return null
 }
