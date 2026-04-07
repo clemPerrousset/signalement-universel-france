@@ -26,7 +26,7 @@
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"/>
 
-        <!-- Section Mairie -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="12dp"/>
 
-        <!-- Card 1: Mairie -->
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardMairie"
             android:layout_width="match_parent"
@@ -69,7 +69,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Section Autres -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="12dp"/>
 
-        <!-- Card 2: Internet -->
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardInternet"
             android:layout_width="match_parent"
@@ -113,7 +113,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Card 3: Produit (Hidden) -->
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardProduit"
             android:layout_width="match_parent"
@@ -148,7 +148,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Card 4: SMS -->
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardSms"
             android:layout_width="match_parent"
@@ -182,7 +182,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Card 5: Nature -->
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardNature"
             android:layout_width="match_parent"
@@ -216,7 +216,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Open Source Licenses Link -->
+
         <TextView
             android:id="@+id/textOpenSource"
             android:layout_width="wrap_content"
